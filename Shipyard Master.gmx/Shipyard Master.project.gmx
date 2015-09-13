@@ -6,17 +6,36 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\spr_containers</sprite>
     <sprite>sprites\spr_truck</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\scr_control_int.gml</script>
+    <script>scripts\scr_control_step.gml</script>
+    <script>scripts\scr_control_draw.gml</script>
+    <script>scripts\scr_truck_int.gml</script>
+    <script>scripts\scr_truck_step.gml</script>
+    <script>scripts\scr_truck_draw.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\o_truck</object>
+    <object>objects\o_control</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\room1</room>
   </rooms>
+  <constants number="9">
+    <constant name="CL_red">1</constant>
+    <constant name="CL_blue">2</constant>
+    <constant name="CL_yellow">3</constant>
+    <constant name="CL_green">4</constant>
+    <constant name="CL_purple">5</constant>
+    <constant name="CL_orange">6</constant>
+    <constant name="CL_white">7</constant>
+    <constant name="CL_black">8</constant>
+    <constant name="CL_disco">9</constant>
+  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>
