@@ -1,5 +1,14 @@
 randomize()
-//initialiseing veriables for roads.
+
+////int level variables////
+colours=3   //Number of colours in level
+coloursAssist=5 //0=random coloured crates selected, 1=alot of asistance, each number after 1 adds more randomness.
+for (i=0; i<colours; i+=1) //set colour counter to 0
+{
+    colourSpaceCount[i]=0 // number of spaces (in length) for each colour
+    colourContainerCount[i]=0 //number of containers (in length not number) for each colour
+};
+////int veriables for roads.////
 roads=3 //number of roads currently unlocked
 trucksSpawnDelayMin=60*10 // Min delay between spawning new trucks to deal with
 trucksSpawnDelayVer=60*5 // the max veriance in spawning time for trucks (added to the min)
