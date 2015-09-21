@@ -5,9 +5,27 @@
   </Configs>
   <NewExtensions/>
   <sounds name="sound"/>
-  <sprites name="sprites"/>
+  <sprites name="sprites">
+    <sprite>sprites\spr_truck_stationary_single</sprite>
+    <sprite>sprites\spr_truck_stationary_double</sprite>
+    <sprite>sprites\spr_truck_stationary_triple</sprite>
+    <sprite>sprites\spr_container_single</sprite>
+    <sprite>sprites\spr_container_double</sprite>
+    <sprite>sprites\spr_container_triple</sprite>
+  </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <objects name="objects">
+    <object>objects\obj_container</object>
+    <object>objects\obj_containerTriple</object>
+    <object>objects\obj_containerDouble</object>
+    <object>objects\obj_truck_statinary_single</object>
+    <object>objects\obj_truck_stationary_double</object>
+    <object>objects\obj_truck_stationary_triple</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\rm_test</room>
+  </rooms>
   <help>
     <rtf>help.rtf</rtf>
   </help>
