@@ -6,6 +6,8 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
+    <sprite>sprites\spr_containers</sprite>
+    <sprite>sprites\spr_truck</sprite>
     <sprite>sprites\spr_truck_stationary_single</sprite>
     <sprite>sprites\spr_truck_stationary_double</sprite>
     <sprite>sprites\spr_truck_stationary_triple</sprite>
@@ -16,6 +18,12 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
+<<<<<<< HEAD
+    <object>objects\o_truck</object>
+  </objects>
+  <rooms name="rooms">
+    <room>rooms\room0</room>
+=======
     <object>objects\obj_container</object>
     <object>objects\obj_containerTriple</object>
     <object>objects\obj_containerDouble</object>
@@ -25,6 +33,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
+>>>>>>> origin/master
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
