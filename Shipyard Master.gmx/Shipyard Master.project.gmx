@@ -7,13 +7,8 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_container</sprite>
-    <sprite>sprites\spr_truck</sprite>
-    <sprite>sprites\spr_truck_stationary_single</sprite>
-    <sprite>sprites\spr_truck_stationary_double</sprite>
-    <sprite>sprites\spr_truck_stationary_triple</sprite>
-    <sprite>sprites\spr_container_single</sprite>
-    <sprite>sprites\spr_container_double</sprite>
-    <sprite>sprites\spr_container_triple</sprite>
+    <sprite>sprites\spr_truck_stationary</sprite>
+    <sprite>sprites\spr_truckOverlay_stationary</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -28,29 +23,10 @@
   <objects name="objects">
     <object>objects\o_truck</object>
     <object>objects\o_control</object>
-	<object>objects\obj_container</object>
-    <object>objects\obj_containerTriple</object>
-    <object>objects\obj_containerDouble</object>
-    <object>objects\obj_truck_statinary_single</object>
-    <object>objects\obj_truck_stationary_double</object>
-    <object>objects\obj_truck_stationary_triple</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
-    <room>rooms\room0</room>
-    <room>rooms\rm_test</room>
   </rooms>
-  <constants number="9">
-    <constant name="CL_red">1</constant>
-    <constant name="CL_blue">2</constant>
-    <constant name="CL_yellow">3</constant>
-    <constant name="CL_green">4</constant>
-    <constant name="CL_purple">5</constant>
-    <constant name="CL_orange">6</constant>
-    <constant name="CL_white">7</constant>
-    <constant name="CL_black">8</constant>
-    <constant name="CL_disco">9</constant>
-  </constants>
   <help>
     <rtf>help.rtf</rtf>
   </help>

@@ -8,35 +8,44 @@ if trucks < maxTrucks// If were not over our limit of trucks
     newTruckColour = floor(random(colours)) //chooses truck colour
     lane= floor(random(roads)) // select the road the new truck will be spawned
 //choosing size and colour of containers for truck
-k=0
+var k=0,containerLengthCount=0,containers=0;
 do{
-    //get container sizes
-    containerSize[k] = ceil(random(newTruckLength - .5)+.25) //chooses length of containers (weighted 25% towards 2 long containers)
-    //get container colours
-    var totalColours=0;
-    for (i=0; i<CONDITION; i+=1){totalColours += colourContainerCount[i]}; //count up all the colours adding veriance for each
-    
-    
-    
-    
-    
-    
-    /* OLD NOT WORKING
-    var j, coloursTotal=0; //int temporary veriables j=random number used in calcs,coloursTotal=total number of all colours.
-    for (i=0; i<colours; i+=1){ coloursTotal += colourSpaceCount[i] }; //find out the total number of "create length" there is. 
-    coloursTotal += colourAssist * colours - colours // add veriance
-    j = random(coloursTotal) //find random number to select colour from.
-    if j < colourSpaceCount[0]-1+colourAssist then {containerColour[k] = 0} else
+    ////get container sizes
+    containerSize[k] = ceil(random((newTruckLength-containerLengthCount) - .5)+.25) //chooses length of containers (weighted 25% towards 2 long containers)
+    containerLengthCount += containerSize[k];
+    ////get container colours
+    var colGrid=ds_grid_create(2,colours); //create a grid (2d array you can do functions with)
+    for (ii=0; ii<colours; ii+=1) //fill the array with the colours and how much they are needed
+    {   
+        ds_grid_set(colGrid,0,ii,ii) //colour in column 0 (number from 0-number of colours)
+        ds_grid_set(colGrid,1,ii,colourSpaceCount[ii]-colourContainerCount[ii]) // that colours unfilled slots
+    };
+    ds_grid_sort(colGrid,1,false) //sort so that the larger number of empty slots is at the top
+    for (ii=0; ii<colours; ii+=1) // replace the number of open slots with the colours "assistance value" (higher the better)
     {
-        for (i=0; i<colours-1; i+=1)
+        if ii<coloursAssistSpread {
+        ds_grid_set(colGrid,1,ii,1+coloursAssist/(ii+1))
+        } else
+        ds_grid_set(colGrid,1,ii,1)
+    };
+    ds_grid_sort(colGrid,0,true) //sort grid by colour (0->9)
+    ds_grid_set(colGrid,1,newTruckColour,0) //set the chance to get the colour of the truck bed to 0
+    var colMax = ds_grid_get_sum(colGrid,1,0,1,ds_grid_height(colGrid)-1); //colMax = sum of all "assistance values"
+    var colRand = random(1) // a random number from 0-1
+    for (ii=0; ii<colours; ii+=1) // tests each colour against the random number
+    {
+        if colRand< ds_grid_get(colGrid,1,ii)/colMax {
+        containerColour[k]=ii
+        ii = colours}else
         {
-            if j < colourSpaceCount[i]-1+colourAssist containerColour[k] = 0
-        };
-    }*/
-    k+=1
-}until()
-
+        colRand -= ds_grid_get(colGrid,1,ii)/colMax // takes off the "assistance value"%  off the rand and then tests the next number (easier then <> comparasons)
+        }
+    };
     
+    ds_grid_destroy(colGrid)
+    k+=1
+    containers+=1
+}until(containerLengthCount>=newTruckLength)
     
     
     if (roads_trucks[lane] + 1) <= roads_maxTrucks
@@ -52,6 +61,7 @@ do{
         {
             i.containerSize[k] = containerSize[k] //length of each container
             i.containerColour[k] = containerColour[k] //colour of each container
+            colourContainerCount[containerColour[k]]+= containerSize[k]
         };
         colourSpaceCount[newTruckColour] += newTruckLength // add to global container space counter
         roads_trucks[lane]+=1 // add to lane tracker
